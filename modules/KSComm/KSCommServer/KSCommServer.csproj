@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
+	<OutputPath Condition="'$(Configuration)' == 'Release' and '$(Platform)' == 'AnyCPU'">$(ProjectDir)..\..\..\run\</OutputPath>
+    <OutputPath Condition="'$(Configuration)' == 'Debug' and '$(Platform)' == 'AnyCPU'">$(ProjectDir)..\..\..\run_D\</OutputPath>
+    <IntermediateOutputPath>$(ProjectDir)..\..\..\tmp\$(Configuration)\$(Platform)\$(MSBuildProjectName)\obj</IntermediateOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KSCommCommon\KSCommCommon.csproj" />
+  </ItemGroup>
+
+</Project>

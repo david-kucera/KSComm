@@ -1,0 +1,22 @@
+﻿<Window x:Class="ClientApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientApp"
+        mc:Ignorable="d"
+        Title="Messenger" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0" Name="TextBoxMessages" Padding="10" Margin="50,20,50,20"></TextBox>
+        <StackPanel Grid.Row="1" FlowDirection="LeftToRight" Orientation="Horizontal">
+            <TextBox Grid.Row="1" Name="InputBoxMessages" Padding="10" Margin="50,0,0,20" MinWidth="640"></TextBox>
+            <Button Grid.Row="1" Name="ButtonSendMessage" Content="Send" Padding="10" Margin="10,0,0,20" Click="ButtonSendMessage_Click"></Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>
