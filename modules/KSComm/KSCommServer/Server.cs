@@ -156,10 +156,12 @@ namespace KSCommServer
 			catch (WebSocketException wex)
 			{
 				Console.WriteLine($"KSCommServer: WebSocket error in HandleWebSocketConnection: {wex.Message}");
+				_clients.Remove(clientId, out _);
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine($"KSCommServer: General error in HandleWebSocketConnection: {ex.Message}");
+				_clients.Remove(clientId, out _);
 			}
 		}
 		#endregion //Private functions

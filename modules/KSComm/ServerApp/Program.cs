@@ -16,7 +16,7 @@ namespace ServerApp
 				var replyMessage = new Message
 				{
 					Source = "Server",
-					Data = Serializator.Serialize("[" + DateTime.Now + "]: " +  Serializator.Deserialize<string>(message.Data))
+					Data = Serializator.Serialize("[" + DateTime.Now + "]: " +  Serializator.Deserialize<string>(message.Data) + " KuceraDavid")
 				};
 				server.SendMessage(message.Source, replyMessage);
 			};

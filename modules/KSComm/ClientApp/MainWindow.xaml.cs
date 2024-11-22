@@ -14,11 +14,14 @@ namespace ClientApp
 			_client = new Client("http://localhost:5555/", _identification);
 			_client.Open();
 			_client.ClientMessageReceived += Client_ClientMessageReceived;
+			TextBoxMessages.Text += Logger.ReadLogs();
 		}
 
 		private void Client_ClientMessageReceived(KSCommCommon.Message message)
 		{
-			TextBoxMessages.Text += message.Source + ": " + Serializator.Deserialize<string>(message.Data) + "\n";
+			var mess = message.Source + ": " + Serializator.Deserialize<string>(message.Data) + "\n";
+			TextBoxMessages.Text += mess;
+			Logger.Log(mess);
 		}
 
 		private void ButtonSendMessage_Click(object sender, RoutedEventArgs e)
