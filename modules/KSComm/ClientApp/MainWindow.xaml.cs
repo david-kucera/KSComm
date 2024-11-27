@@ -6,15 +6,11 @@ namespace ClientApp
 {
 	public partial class MainWindow : Window
 	{
-		private readonly string _identification = System.Guid.NewGuid().ToString();
-		private readonly Client _client;
+		private string _identification = string.Empty;
+		private Client _client = null!;
 		public MainWindow()
 		{
 			InitializeComponent();
-			_client = new Client("http://localhost:5555/", _identification);
-			_client.Open();
-			_client.ClientMessageReceived += Client_ClientMessageReceived;
-			TextBoxMessages.Text += Logger.ReadLogs(_identification);
 		}
 
 		private void Client_ClientMessageReceived(KSCommCommon.Message message)
@@ -26,6 +22,7 @@ namespace ClientApp
 
 		private void ButtonSendMessage_Click(object sender, RoutedEventArgs e)
 		{
+			if (string.IsNullOrEmpty(_identification) || _client == null) return;
 			if (InputBoxMessages.Text.Length > 0)
 			{
 				var msg = new KSCommCommon.Message
@@ -38,7 +35,21 @@ namespace ClientApp
 			}
 		}
 
-		private void Exit_Click(object sender, RoutedEventArgs e)
+		private void Connect_Click(object sender, RoutedEventArgs e)
+		{
+            InputWindow inputWindow = new InputWindow();
+			if (inputWindow.ShowDialog() == true) 
+			{
+                _identification = inputWindow.TextBoxId.Text;
+                _client = new Client("http://localhost:5555/", _identification);
+                _client.Open();
+                _client.ClientMessageReceived += Client_ClientMessageReceived;
+                TextBoxMessages.Text += Logger.ReadLogs(_identification);
+            }
+        }
+
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
 		{
 			Environment.Exit(0);
 		}
