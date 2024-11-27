@@ -4,7 +4,7 @@ namespace ClientApp
 {
 	public static class Logger
 	{
-		private const string FILE_PATH = "../../data/history";
+		private const string FILE_PATH = "../../data";
 
 		public static void Log(string message, string identification)
 		{
