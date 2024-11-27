@@ -8,14 +8,21 @@
         Title="Messenger" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Row="0" Name="TextBoxMessages" Padding="10" Margin="50,20,50,20"></TextBox>
-        <StackPanel Grid.Row="1" FlowDirection="LeftToRight" Orientation="Horizontal">
-            <TextBox Grid.Row="1" Name="InputBoxMessages" Padding="10" Margin="50,0,0,20" MinWidth="640"></TextBox>
-            <Button Grid.Row="1" Name="ButtonSendMessage" Content="Send" Padding="10" Margin="10,0,0,20" Click="ButtonSendMessage_Click"></Button>
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="Exit" Click="Exit_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <TextBox Grid.Row="1" Name="TextBoxMessages" Padding="10" Margin="50,20,50,20"></TextBox>
+        <StackPanel Grid.Row="2" FlowDirection="LeftToRight" Orientation="Horizontal">
+            <TextBox Grid.Row="2" Name="InputBoxMessages" Padding="10" Margin="50,0,0,20" MinWidth="640"></TextBox>
+            <Button Grid.Row="2" Name="ButtonSendMessage" Content="Send" Padding="10" Margin="10,0,0,20" Click="ButtonSendMessage_Click"></Button>
         </StackPanel>
         
     </Grid>

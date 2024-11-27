@@ -4,18 +4,20 @@ namespace ClientApp
 {
 	public static class Logger
 	{
-		private const string FILE_PATH = "../../data/history.txt";
+		private const string FILE_PATH = "../../data/history";
 
-		public static void Log(string message)
+		public static void Log(string message, string identification)
 		{
-			if (!File.Exists(FILE_PATH)) File.Create(FILE_PATH).Close();
-			File.AppendAllText(FILE_PATH, message);
+			string newFilePath = FILE_PATH + identification + ".txt";
+            if (!File.Exists(newFilePath)) File.Create(newFilePath).Close();
+			File.AppendAllText(newFilePath, message);
 		}
 
-		public static string ReadLogs()
+		public static string ReadLogs(string identification)
 		{
-			if (!File.Exists(FILE_PATH)) File.Create(FILE_PATH).Close();
-			return File.ReadAllText(FILE_PATH);
+            string newFilePath = FILE_PATH + identification + ".txt";
+            if (!File.Exists(newFilePath)) File.Create(newFilePath).Close();
+			return File.ReadAllText(newFilePath);
 		}
 	}
 }
